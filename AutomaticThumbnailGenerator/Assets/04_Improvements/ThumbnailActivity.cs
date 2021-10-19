@@ -28,7 +28,13 @@ namespace ThumbGenExamples
 
             GameObject prefab = Resources.Load<GameObject>(_resourceName);
 
-            _object = GameObject.Instantiate(prefab);
+            GameObject stage = GameObject.Find("Stage");
+
+            _object = GameObject.Instantiate(prefab, stage?.transform);
+
+            Camera cam = _thumbGen.ThumbnailCamera.GetComponent<Camera>();
+
+            cam.transform.LookAt(stage.transform);
 
             return true;
         }

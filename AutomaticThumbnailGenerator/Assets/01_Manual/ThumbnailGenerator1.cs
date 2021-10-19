@@ -91,8 +91,7 @@ namespace ThumbGenExamples
                 {
                     filename = filename.Replace(c, '_');
                 }
-
-
+                
                 string finalPath = string.Format("{0}/{1}.png", ExportFilePath, filename);
 
                 byte[] bytes = tex.EncodeToPNG();
