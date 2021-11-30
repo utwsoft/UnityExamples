@@ -32,9 +32,13 @@ namespace ThumbGenExamples
 
         private void AssignRenderTextureToCamera()
         {
-            if (ThumbnailCamera != null)
+            if (ThumbnailCamera != null && TargetRenderTexture != null)
             {
                 ThumbnailCamera.targetTexture = TargetRenderTexture;
+            }
+            else if (ThumbnailCamera.targetTexture != null)
+            {
+                TargetRenderTexture = ThumbnailCamera.targetTexture;
             }
         }
 
@@ -57,7 +61,7 @@ namespace ThumbGenExamples
                 throw new System.InvalidOperationException("ThumbnailCamera not found. Please assign one to the ThumbnailGenerator.");
             }
 
-            if (TargetRenderTexture == null)
+            if (TargetRenderTexture == null && ThumbnailCamera.targetTexture == null)
             {
                 throw new System.InvalidOperationException("RenderTexture not found. Please assign one to the ThumbnailGenerator.");
             }
